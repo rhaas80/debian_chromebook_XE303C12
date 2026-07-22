@@ -1,0 +1,89 @@
+From a5c3a2088db791460124e7531b9028a7e8352000 Mon Sep 17 00:00:00 2001
+From: Gilson Olegario <gilsonolegario@gmail.com>
+Date: Sun, 21 Jul 2019 19:55:10 -0300
+Subject: [PATCH] Trackpad Samsung Snow
+
+Signed-off-by: Gilson Olegario <gilsonolegario@gmail.com>
+---
+ arch/arm/boot/dts/exynos5250-snow-common.dtsi | 13 -------------
+ arch/arm/boot/dts/exynos5250-snow-rev5.dts    | 14 ++++++++++++++
+ arch/arm/boot/dts/exynos5250-snow.dts         | 14 ++++++++++++++
+ 3 files changed, 28 insertions(+), 13 deletions(-)
+
+diff --git a/arch/arm/boot/dts/exynos5250-snow-common.dtsi b/arch/arm/boot/dts/exynos5250-snow-common.dtsi
+index fd9226d3b..174dd5b1d 100644
+--- a/arch/arm/boot/dts/exynos5250-snow-common.dtsi
++++ b/arch/arm/boot/dts/exynos5250-snow-common.dtsi
+@@ -434,19 +434,6 @@
+ 	};
+ };
+ 
+-&i2c_1 {
+-	status = "okay";
+-	samsung,i2c-sda-delay = <100>;
+-	samsung,i2c-max-bus-freq = <378000>;
+-
+-	trackpad@67 {
+-		reg = <0x67>;
+-		compatible = "cypress,cyapa";
+-		interrupts = <2 IRQ_TYPE_NONE>;
+-		interrupt-parent = <&gpx1>;
+-		wakeup-source;
+-	};
+-};
+ 
+ /*
+  * Disabled pullups since external part has its own pullups and
+diff --git a/arch/arm/boot/dts/exynos5250-snow-rev5.dts b/arch/arm/boot/dts/exynos5250-snow-rev5.dts
+index 7cbfc6f1f..c12d3dc0d 100644
+--- a/arch/arm/boot/dts/exynos5250-snow-rev5.dts
++++ b/arch/arm/boot/dts/exynos5250-snow-rev5.dts
+@@ -31,6 +31,20 @@
+ 	};
+ };
+ 
++&i2c_1 {
++	status = "okay";
++	samsung,i2c-sda-delay = <100>;
++	samsung,i2c-max-bus-freq = <378000>;
++
++	trackpad@4b {
++		reg = <0x4b>;
++		compatible = "atmel,maxtouch";
++		interrupts = <2 IRQ_TYPE_NONE>;
++		interrupt-parent = <&gpx1>;
++		wakeup-source;
++	};
++};
++
+ &i2c_7 {
+ 	max98090: codec@10 {
+ 		compatible = "maxim,max98090";
+diff --git a/arch/arm/boot/dts/exynos5250-snow.dts b/arch/arm/boot/dts/exynos5250-snow.dts
+index 75fdc5e6d..075c80b6a 100644
+--- a/arch/arm/boot/dts/exynos5250-snow.dts
++++ b/arch/arm/boot/dts/exynos5250-snow.dts
+@@ -29,6 +29,20 @@
+ 	};
+ };
+ 
++&i2c_1 {
++	status = "okay";
++	samsung,i2c-sda-delay = <100>;
++	samsung,i2c-max-bus-freq = <378000>;
++
++	trackpad@67 {
++		reg = <0x67>;
++		compatible = "cypress,cyapa";
++		interrupts = <2 IRQ_TYPE_NONE>;
++		interrupt-parent = <&gpx1>;
++		wakeup-source;
++	};
++};
++
+ &i2c_7 {
+ 	max98095: codec@11 {
+ 		compatible = "maxim,max98095";
+-- 
+2.22.0
+

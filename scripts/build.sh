@@ -22,6 +22,8 @@ else
 	exit 1
 fi
 
+# apply patch for rev5 dtb by issoeocio, https://archlinuxarm.org/forum/viewtopic.php?f=47&t=13801
+( cd arch/arm/boot/dts/samsung ; patch -p5 </scripts/0009-Trackpad-Samsung-Snow.patch )
 kernel_version="$(make kernelversion)"
 
 export kernel_version
